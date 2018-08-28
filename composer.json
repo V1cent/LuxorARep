@@ -1,0 +1,29 @@
+{
+    "name": "vendor/luxor-adv",
+    "description": "Description of project LuxorAdv.",
+    "authors": [
+        {
+            "name": "Vcent",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.14",
+        "yiisoft/yii2-debug": "~2.0",
+        "yiisoft/yii2-gii": "~2.0",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "mdmsoft/yii2-admin": "~2.0",
+        "kartik-v/yii2-widget-sidenav":"*",
+        "kartik-v/yii2-widget-alert":"*",
+        "wbraganca/yii2-dynamicform":"*",
+        "schmunk42/yii2-giiant":"@stable",
+        "kartik-v/yii2-widgets":"*",
+        "kartik-v/yii2-widget-fileinput":"@dev",
+        "kartik-v/yii2-mpdf":"dev-master",
+        "kartik-v/yii2-grid":"@dev",
+        "dmstr/yii2-adminlte-asset":"^2.1"
+        
+    }
+}
