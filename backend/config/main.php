@@ -8,10 +8,25 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name'=>'Administrador luxor',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        
+        'blog' => [
+         'class' => 'akiraz2\blog\Module',
+         'controllerNamespace' => 'akiraz2\blog\controllers\backend',
+         'redactorModule' => 'redactor' // 'redactorBlog' - default, maybe you want use standard module 'redactor' with own config
+        ],
+        'redactor' => [
+         'class' => 'yii\redactor\RedactorModule',
+         'uploadDir' => '@frontend/web/img/upload/',
+         'uploadUrl' => $params['frontendHost'] . '/img/upload', //$params['frontendHost'] . '@frontend/web/img/upload',
+         'imageAllowExtensions' => ['jpg', 'png', 'gif', 'svg']
+     ],
+        
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -19,10 +34,12 @@ return [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                  '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
+                  '@app/views/blog-category' => '@akiraz2/yii2-blog/views/backend/blog-category' ,
                 ],
             ],
         ],
+          
 //        'user' => [
 //            'identityClass' => 'common\models\User',
 //            'enableAutoLogin' => true,
@@ -30,7 +47,7 @@ return [
 //        ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'Admin_Luxor',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

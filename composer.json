@@ -25,7 +25,8 @@
         "kartik-v/yii2-grid":"@dev",
         "dmstr/yii2-adminlte-asset":"^2.1",
         "abhi1693/yii2-config": "1.0.0",
-        "abhi1693/yii2-installer": "*"
+        "abhi1693/yii2-installer": "*",
+        "akiraz2/yii2-blog": "dev-master"
         
     }
 }

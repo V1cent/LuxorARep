@@ -7,22 +7,43 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => 'paginaLuxor',
+    'name'=>'Inmobiliaria Luxor',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+     'modules' => [
+        'blog' => [
+            'class' => 'akiraz2\blog\Module',
+            'controllerNamespace' => 'akiraz2\blog\controllers\frontend',
+            'blogPostPageCount' => 6,
+            'blogCommentPageCount' => 10, //20 by default
+            'enableComments' => true, //true by default
+            'schemaOrg' => [ // empty array [] by default! 
+                'publisher' => [
+                    'logo' => '/img/logo.png',
+                    'logoWidth' => 191,
+                    'logoHeight' => 74,
+                    'name' => 'My Company',
+                    'phone' => '+1 800 488 80 85',
+                    'address' => 'City, street, house'
+                ]
+            ]
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'identityClass' => 'mdm\admin\models\User',
+            "loginUrl" => ['admin/user/login'],
+            //'enableAutoLogin' => true,
+            
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
+            'name' => 'Inmobiliaria Luxor',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -35,6 +56,13 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@akiraz2/yii2-blog/views/frontend/default' => '@app/views/blog'
+                ],
+            ],
         ],
         /*
         'urlManager' => [

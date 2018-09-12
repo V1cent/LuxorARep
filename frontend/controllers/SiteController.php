@@ -26,10 +26,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup','about'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup','about'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -90,7 +90,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
-            $model->password = '';
+            //$model->password = '';
 
             return $this->render('login', [
                 'model' => $model,

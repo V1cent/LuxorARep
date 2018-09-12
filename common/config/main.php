@@ -1,6 +1,7 @@
 <?php
 return [
-    'id'=>'Luxor',
+     'id' => 'Luxor',
+    'name'=>'Inmobiliaria Luxor',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -9,11 +10,17 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'modules'=>[
-      'admin'=>[
-            'class'=>'mdm\admin\module',
-      ],
+        'admin'=>[
+              'class'=>'mdm\admin\module',
+        ],
         'gridview'=>[
         'class'=> \kartik\grid\GridView::className()  
+        ],
+        'blog' => [
+            'class' => akiraz2\blog\Module::class,
+            'urlManager' => 'urlManager',// 'urlManager' by default, or maybe you can use own component urlManagerFrontend
+            'imgFilePath' => '@frontend/web/img/blog/',
+            'imgFileUrl' => '/img/blog/',                   
         ],
     ],
     'components' => [
@@ -23,6 +30,12 @@ return [
         'authManager'=>[
             'class'=>'yii\rbac\DBManager'
            ],
+        'urlManager' => [
+                'enablePrettyUrl' => true,
+                //'showScriptName' => false,
+                'rules' => [               
+                ],
+            ],
         'user' => [
             'identityClass' => 'mdm\admin\models\User',
             "loginUrl" => ['admin/user/login'],
