@@ -28,7 +28,7 @@ $this->title = 'My Yii Application';
                     <h2 class="h2-responsive"><?php echo Html::encode(\Yii::$app->name); ?></h2>
                     <hr>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis pariatur quod ipsum atque quam dolorem voluptate officia sunt placeat consectetur alias fugit cum praesentium ratione sint mollitia, perferendis natus quaerat!</p>
-                    <a href="" class="btn btn-primary">Get it now!</a>
+                    <a href="" class="btn btn-primary"> mas</a>
                 </div>
             </div>
             <!--/.First row-->
