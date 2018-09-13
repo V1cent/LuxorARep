@@ -31,11 +31,16 @@ return [
             'class'=>'yii\rbac\DBManager'
            ],
         'urlManager' => [
-                'enablePrettyUrl' => true,
-                //'showScriptName' => false,
-                'rules' => [               
+           'enablePrettyUrl' => true,
+            //'enableStrictParsing' => true,
+            //'showScriptName' => false,
+            'rules' => [
+                [
+                'class' => 'yii\rest\UrlRule',
+                'controller' => 'user',
                 ],
-            ],
+             ],
+         ],
         'user' => [
             'identityClass' => 'mdm\admin\models\User',
             "loginUrl" => ['admin/user/login'],

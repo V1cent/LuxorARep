@@ -13,6 +13,17 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
+use akiraz2\blog\models\BlogCategory;
+use akiraz2\blog\models\BlogComment;
+use akiraz2\blog\models\BlogCommentSearch;
+use akiraz2\blog\models\BlogPost;
+use akiraz2\blog\models\BlogPostSearch;
+use akiraz2\blog\Module;
+use akiraz2\blog\traits\IActiveStatus;
+use akiraz2\blog\traits\ModuleTrait;
+use yii\helpers\ArrayHelper;
+use yii\web\NotFoundHttpException;
+
 /**
  * Site controller
  */
@@ -72,7 +83,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        
+        $searchModel = new BlogPostSearch();
+        $searchModel->scenario = BlogPostSearch::SCENARIO_USER;
+
+        $dataProvider = $searchModel->search(['category_id'=>'1']);
+
+        $blog4 = \akiraz2\blog\models\BlogPost::find(['category_id'=>'1'])->orderby('created_at')->limit(4)->all();
+        
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'modelblog4'=>$blog4,
+            
+        ]);
+       
     }
 
     /**
