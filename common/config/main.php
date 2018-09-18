@@ -13,6 +13,10 @@ return [
         'admin'=>[
               'class'=>'mdm\admin\module',
         ],
+         'user' => [
+                'class'  => \mdm\admin\Module::className(),
+                'layout' => '@frontend/views/layouts/main'
+        ],
         'gridview'=>[
         'class'=> \kartik\grid\GridView::className()  
         ],

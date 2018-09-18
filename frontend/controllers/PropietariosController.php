@@ -27,7 +27,7 @@ use yii\web\NotFoundHttpException;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class PropietariosController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -39,13 +39,9 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'only' => ['logout', 'signup'],
                 'rules' => [
+                    
                     [
-                        'actions' => ['index', 'signup','nosotros','contact'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -59,6 +55,9 @@ class SiteController extends Controller
             ],
         ];
     }
+
+    //establecemos el layout zonapropietarios
+public $layout = 'main_prop';
 
     /**
      * {@inheritdoc}
@@ -85,12 +84,16 @@ class SiteController extends Controller
     {
           if (Yii::$app->user->isGuest) 
         {
+            
+            return $this->render('login');
+       
+        } else {
             $searchModel = new BlogPostSearch();
             $searchModel->scenario = BlogPostSearch::SCENARIO_USER;
 
             $dataProvider = $searchModel->search(['category_id'=>'1']);
 
-            $blog4 = \akiraz2\blog\models\BlogPost::find()->where(['category_id'=>'1'])->orderby('created_at desc')->limit(4)->all();
+            $blog4 = \akiraz2\blog\models\BlogPost::find()->where(['category_id'=>'3'])->orderby('created_at desc')->limit(4)->all();
 
             return $this->render('index', [
                 'searchModel' => $searchModel,
@@ -98,9 +101,6 @@ class SiteController extends Controller
                 'modelblog4'=>$blog4,
 
             ]);
-       
-        } else {
-            return $this->redirect(Yii::$app->urlManager->createUrl('//propietarios/index'));
         }
     
     }

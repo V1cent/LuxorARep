@@ -3,12 +3,14 @@
 use yii\helpers\Html;
 use yii\widgets\Menu;
 use yii\widgets\Breadcrumbs;
+use frontend\assets\AppAsset;
 
 /**
  * @var $this \yii\base\View
  * @var $content string
  */
-// $this->registerAssetBundle('app');
+//$this->registerAssetBundle('app');
+AppAsset::register($this);
 ?>
 <?php $this->beginPage(); ?>
 
@@ -17,40 +19,14 @@ use yii\widgets\Breadcrumbs;
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <meta charset="<?= Yii::$app->charset ?>"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?= Html::csrfMetaTags() ?>
+	<title><?= Html::encode($this->title) ?></title>
+	<?php $this->head() ?>
 
-    <title><?php echo Html::encode(\Yii::$app->name); ?></title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap core CSS -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Material Design Bootstrap -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/mdb.min.css" rel="stylesheet">
-
-    <!-- Template styles -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/style.css" rel="stylesheet">
-
-    <style>
-      
-      body {
-        background-color: white;
-      }
-
-      .primary-color-dark {
-        background-color: #0d47a1 !important; /* a kek hatter szin */
-      }
-    /*** TF PALETTE ***/
-body{background-color:#FCFFF5;}
-.primary-color-dark, .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{background-color:#193441 !important;border-color:#193441;}
-nav.top-nav-collapse{background-color:#91AA9D;}
-.btn-primary, .btn-default, .btn-default:focus, .btn-default:hover, .btn-primary:focus, .btn-primary:hover{background-color:#D1DBBD !important;}
-body{color:#3E606F;}
-    </style>
+   
 
 </head>
 
@@ -73,28 +49,50 @@ body{color:#3E606F;}
                 <!--Collapse content-->
                 <div class="collapse navbar-toggleable-xs" id="collapseEx">
                     <!--Navbar Brand-->
-                    <a class="navbar-brand" href="#" target="_blank"><?php echo Html::encode(\Yii::$app->name); ?></a>
+                    <a class="navbar-brand" href="#" target="_blank "> 
+                        <?= Html::img('/img/upload/1/5034a5d62f-logoluxor.jpg',['class'=> "img-fluid"]); ?>
+                        
+                    </a>
+                    
                     <!--Links-->
                     <?php
-      				        echo Menu::widget([
+                    $menuItems[] = ['label' => 'Inicio', 'url' => ['site/index'], "options" => [ "class" => "nav-item"]];
+                        $menuItems[] = ['label' => 'Nosotros', 'url' => ['site/about'], "options" => [ "class" => "nav-item"]];
+                        $menuItems[] = ['label' => 'Servicios', 'url' => ['blog/2-nuestros-servicios'], "options" => [ "class" => "nav-item"]];
+                        $menuItems[] = ['label' => 'Contactenos', 'url' => ['site/contact'], "options" => [ "class" => "nav-item"]];
+                    if (Yii::$app->user->isGuest) {
+                        $menuItems[] = ['label' => 'Login', 'url' => ['site/login'], "options" => [ "class" => "nav-item"]];
+                        echo Menu::widget([
+                          'options' => [
+                            "id"  => "nav",
+                            "class" => "nav navbar-nav"
+                          ],
+                            'items' => $menuItems,
+                        ]);
+                    }          
+                     else {
+                         echo Menu::widget([
       				          'options' => [
       				            "id"  => "nav",
       				            "class" => "nav navbar-nav"
       				          ],
-    				            'items' => [
-    				              ['label' => 'Inicio', 'url' => ['site/index'], "options" => [ "class" => "nav-item"]],
-    				              ['label' => 'Nosotros', 'url' => ['site/about'], "options" => [ "class" => "nav-item"]],
-    				              ['label' => 'Servicios', 'url' => ['site/servicios'], "options" => [ "class" => "nav-item"]],
-    				              ['label' => 'Contactenos', 'url' => ['site/contact'], "options" => [ "class" => "nav-item"]],
-    				              ['label' => 'Login', 'url' => ['site/login'], "options" => [ "class" => "nav-item"], 'visible' => Yii::$app->user->isGuest],
-    				            ],
+    				            'items' => $menuItems,
       				        ]);
-	  		            ?>
-
-                    <!--Search form-->
-                    <form class="form-inline">
+	  		            
+                     
+                        echo '<li>'
+                            . Html::beginForm(['/site/logout'], 'post',[ "class" => "nav nav-item"])
+                            . Html::submitButton(
+                                'Logout (' . Yii::$app->user->identity->username . ')',
+                                ['class' => 'btn btn-link logout']
+                            )
+                            . Html::endForm()
+                            . '</li>';
+                        }
+                        ?>
+                    <!--form class="form-inline">
                         <input class="form-control" type="text" placeholder="Search">
-                    </form>
+                    </form-->
                 </div>
                 <!--/.Collapse content-->
 
@@ -139,12 +137,12 @@ body{color:#3E606F;}
 
                 <!--Second column-->
                 <div class="col-md-2 col-md-offset-1">
-                    <h5 class="title">First column</h5>
+                    <h5 class="title">Ubiquenos</h5>
                     <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
+                        <li><a href="#!">Horario de Atencion</a></li>
+                        <li><a href="#!">Nuestras Oficinas</a></li>
+                        <li><a href="#!">Telefonos</a></li>
+                        <li><a href="#!">contactenos</a></li>
                     </ul>
                 </div>
                 <!--/.Second column-->
@@ -153,12 +151,12 @@ body{color:#3E606F;}
 
                 <!--Third column-->
                 <div class="col-md-2">
-                    <h5 class="title">Second column</h5>
+                    <h5 class="title">Servicios</h5>
                     <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
+                        <li><a href="#!">Administracion de Condominios</a></li>
+                        <li><a href="#!">Alquiler de inmuebles</a></li>
+                        <li><a href="#!">Asesoria Inmobiliaria</a></li>
+                        <li><a href="#!">Servicios Externo de Condominios</a></li>
                     </ul>
                 </div>
                 <!--/.Third column-->

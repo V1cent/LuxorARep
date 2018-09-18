@@ -13,6 +13,7 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
      'modules' => [
+        
         'blog' => [
             'class' => 'akiraz2\blog\Module',
             'controllerNamespace' => 'akiraz2\blog\controllers\frontend',
@@ -36,15 +37,23 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => 'mdm\admin\models\User',
-            "loginUrl" => ['admin/user/login'],
+            'identityCookie' => [
+                'name'     => '_frontendIdentity',
+                'path'     => '/',
+                'httpOnly' => true,
+            ],
+            //'identityClass' => 'mdm\admin\models\User',
+            //"loginUrl" => ['admin/user/login'],
             //'enableAutoLogin' => true,
             
         ],
-        'session' => [
-            // this is the name of the session cookie used for login on the frontend
-            'name' => 'Inmobiliaria Luxor',
-        ],
+         'session' => [
+            'name' => 'FRONTENDSESSID',
+            'cookieParams' => [
+                'httpOnly' => true,
+                'path'     => '/',
+            ],
+        ], 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -60,7 +69,7 @@ return [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@akiraz2/yii2-blog/views/frontend/default' => '@app/views/blog'
+                    '@app/frontend/index' => '@app/views/layouts/main'
                 ],
             ],
         ],

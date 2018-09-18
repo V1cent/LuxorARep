@@ -1,7 +1,19 @@
 html,
+
+
+.primary-color-dark {
+        background-color: #0d47a1 !important; /* a kek hatter szin */
+      }
+    /*** TF PALETTE ***/
 body {
     height: 100%;
+    background-color:#FCFFF5;
+    color:#3E606F;
 }
+.primary-color-dark, .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{background-color:#193441 !important;border-color:#193441;}
+nav.top-nav-collapse{background-color:#91AA9D;}
+.btn-primary, .btn-default, .btn-default:focus, .btn-default:hover, .btn-primary:focus, .btn-primary:hover{background-color:#D1DBBD !important;}
+
 
 .wrap {
     min-height: 100%;
