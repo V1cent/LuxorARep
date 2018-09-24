@@ -33,7 +33,7 @@ use yii\helpers\Html;
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="/img/userone.jpg" class="img-circle"
+                                            <img src="<?= $directoryAsset ?>/img/userone.jpg" class="img-circle"
                                                  alt="User Image"/>
                                         </div>
                                         <h4>
@@ -47,7 +47,7 @@ use yii\helpers\Html;
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="/img/userone.jpg" class="img-circle"
+                                            <img src="<?= $directoryAsset ?>/img/userone.jpg" class="img-circle"
                                                  alt="user image"/>
                                         </div>
                                         <h4>
@@ -106,18 +106,18 @@ use yii\helpers\Html;
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="/img/userone.jpg" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Nombre Propietario</span>
+                        <img src="<?= $directoryAsset ?>/img/useradmin.jpg" class="user-image" alt="User Image"/>
+                        <span class="hidden-xs"><?php if (Yii::$app->user->identity) echo Yii::$app->user->identity->username; else echo '';?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="/img/userone.jpg" class="img-circle"
+                            <img src="<?= $directoryAsset ?>/img/useradmin.jpg" class="img-circle"
                                  alt="User Image"/>
 
                             <p>
-                                Nombre Propietario
-                                <small>Member since Nov. 2012</small>
+                                <?php if (Yii::$app->user->identity) echo Yii::$app->user->identity->username; else echo '';?>
+                                
                             </p>
                         </li>
                         

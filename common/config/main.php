@@ -22,7 +22,7 @@ return [
         ],
         'blog' => [
             'class' => akiraz2\blog\Module::class,
-            'urlManager' => 'urlManager',// 'urlManager' by default, or maybe you can use own component urlManagerFrontend
+            //'urlManager' => 'urlManager',// 'urlManager' by default, or maybe you can use own component urlManagerFrontend
             'imgFilePath' => '@frontend/web/img/blog/',
             'imgFileUrl' => '/img/blog/',                   
         ],
@@ -47,7 +47,7 @@ return [
          ],
         'user' => [
             'identityClass' => 'mdm\admin\models\User',
-            "loginUrl" => ['admin/user/login'],
+            //"loginUrl" => ['admin/user/login'],
             //'enableAutoLogin' => true,
             
         ],

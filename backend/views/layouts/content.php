@@ -37,7 +37,8 @@ use dmstr\widgets\Alert;
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>mvillalonga@gmail.com</b> Villa2018
+        <b>Version</b> 1.0
     </div>
-    <strong>Hospedaje y Desarrollado <a href="http://tisoluciones.com.ve">TI Soluciones</a>.</strong> &copy; 2018-2021
+    <strong>Copyright &copy; <a href="http://tisoluciones.com.ve">TI Soluciones</a>.</strong> 
 </footer>
+

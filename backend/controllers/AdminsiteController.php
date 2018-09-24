@@ -10,7 +10,7 @@ use common\models\LoginForm;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class AdminsiteController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -41,6 +41,8 @@ class SiteController extends Controller
         ];
     }
 
+        //establecemos el layout zonapropietarios
+public $layout = 'main_admin';
     /**
      * {@inheritdoc}
      */
@@ -66,7 +68,6 @@ class SiteController extends Controller
        
         } else {
             return $this->render('index');
-            //return $this->redirect(Yii::$app->urlManager->createUrl('//adminsite/index'));
         }
     }
 

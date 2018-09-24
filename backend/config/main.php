@@ -34,21 +34,30 @@ return [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                  '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
-                  '@app/views/blog-category' => '@akiraz2/yii2-blog/views/backend/blog-category' ,
+                    '@app/backend/index' => '@app/views/layouts/main',
+                  //'@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
+                  //'@app/views/blog-category' => '@akiraz2/yii2-blog/views/backend/blog-category' ,
                 ],
             ],
         ],
-          
-//        'user' => [
-//            'identityClass' => 'common\models\User',
-//            'enableAutoLogin' => true,
-//            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
-//        ],
-        'session' => [
-            // this is the name of the session cookie used for login on the backend
-            'name' => 'Admin_Luxor',
+        'user' => [
+            'identityCookie' => [
+                'name'     => '_backendIdentity',
+                'path'     => '/',
+                'httpOnly' => true,
+            ],
+            //'identityClass' => 'mdm\admin\models\User',
+            //"loginUrl" => ['admin/user/login'],
+            //'enableAutoLogin' => true,
+            
         ],
+         'session' => [
+            'name' => 'BACKENDSESSID',
+            'cookieParams' => [
+                'httpOnly' => true,
+                'path'     => '/',
+            ],
+        ], 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -61,14 +70,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
+        
+        /*'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
-        ],
-        */
+        ],*/
+        
     ],
     'params' => $params,
 ];

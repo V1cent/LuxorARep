@@ -5,7 +5,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="/img/userone.jpg" class="img-circle" alt="User Image"/>
+                <img src="<?= $directoryAsset ?>/img/useradmin.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p>Nombre Propietario</p>
@@ -18,9 +18,9 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Propietarios', 'options' => ['class' => 'header']],
-                    ['label' => 'Ver cartelera', 'icon' => 'folder-open', 'url' => ['/gii']],
-                    ['label' => 'Publicar en Cartelera', 'icon' => 'comment', 'url' => ['/debug']],
+                    ['label' => 'Menu Administrador', 'options' => ['class' => 'header']],
+                    ['label' => 'Ver Categorias', 'icon' => 'folder-open', 'url' => ['/blog/blog-category']],
+                    ['label' => 'Ver Articulos', 'icon' => 'comment', 'url' => ['/blog/blog-post']],
                     [
                         'label' => 'Informacion por Edificio',
                         'icon' => 'share',
@@ -36,6 +36,7 @@
                                     'items' => [
                                         ['label' => 'Junta de Condominio', 'icon' => 'circle-o', 'url' => '#',],
                                         ['label' => 'Proeedores Edificio', 'icon' => 'circle-o', 'url' => '#',],
+                                        ['label' => 'Servicios Edificio', 'icon' => 'circle-o', 'url' => '#',],
                                     ],
                                 ],
                             ],
@@ -47,19 +48,19 @@
                         'items' => [
                                 ['label' => 'Estado de Cuenta', 'icon' => 'money', 'url' => ['/gii'],],
                                 ['label' => 'Historico de Pagos', 'icon' => 'list', 'url' => ['/debug'],],
-                                ['label' => 'Notificacion de Pago', 'icon' => 'send', 'url' => ['/debug'],],
+                                ['label' => 'Confirmacion de Pagos', 'icon' => 'send', 'url' => ['/debug'],],
                                 ['label' => 'Ver Recibos en linea', 'icon' => 'search', 'url' => ['/debug'],],
                             ],
                     ],
                     [
-                        'label' => 'Perfil del Propietario',
-                        'icon' => 'user',
+                        'label' => 'Funciones Sistema',
+                        'icon' => 'gear',
                         'url' => '#',
                         'items' => [
-                                ['label' => 'Ver Datos Afiliados', 'icon' => 'save', 'url' => ['/gii'],],
-                                ['label' => 'Perfil Web', 'icon' => 'users', 'url' => ['/debug'],],
-                                ['label' => 'Cambiar Clace de acceso', 'icon' => 'trash', 'url' => ['/debug'],],
-                                ['label' => 'Cargar Foto', 'icon' => 'camera', 'url' => ['/debug'],],
+                                ['label' => 'Generar Recibos', 'icon' => 'save', 'url' => ['/gii'],],
+                                ['label' => 'Generar Notificaciones', 'icon' => 'send', 'url' => ['/debug'],],
+                                ['label' => 'Consultar Propietarios', 'icon' => 'users', 'url' => ['/debug'],],
+                                ['label' => 'Actualizar Datos web', 'icon' => 'camera', 'url' => ['/debug'],],
                             ],
                     ],
                 ],
